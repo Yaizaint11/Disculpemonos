@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para ti Franco 💖</title>
+
+<style>
+body {
+  text-align: center;
+  font-family: Arial;
+  background: linear-gradient(#ffd6d6, #ffeaea);
+  overflow: hidden;
+}
+
+h1 {
+  margin-top: 40px;
+  color: #ff4d6d;
+}
+
+#carta {
+  width: 80%;
+  margin: auto;
+  font-size: 18px;
+  color: #444;
+  min-height: 150px;
+  white-space: pre-line;
+}
+
+img {
+  width: 220px;
+  border-radius: 20px;
+  margin: 15px;
+}
+
+button {
+  padding: 12px 25px;
+  margin: 15px;
+  font-size: 18px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+#si {
+  background-color: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background-color: #999;
+  color: white;
+  position: absolute;
+}
+
+.corazon {
+  position: absolute;
+  animation: flotar 5s linear infinite;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(100vh); opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Para ti Franco 😔💖</h1>
+
+<img src="foto.jpg">
+
+<div id="carta"></div>
+
+<button id="si" onclick="aceptar()">Sí 💖</button>
+<button id="no" onmouseover="mover()">No 😢</button>
+
+<script>
+let texto = `Franco... 😔💖
+
+Amor, no sabes cuánto me duele estar así contigo...
+No me gusta sentir esta distancia entre nosotros 💔
+
+Te amo por todo lo que eres,
+por cómo me haces sentir,
+por cada momento a tu lado 🥺
+
+No vale la pena estar peleados amor...
+de verdad no vale la pena 😞
+
+Tú eres lo más importante para mí,
+y me duele muchísimo estar así contigo 💔
+
+Voy a esforzarme de verdad para que esto funcione,
+porque lo único que quiero es estar bien contigo 😭✨
+
+No seas bobito… tú sabes que te amo muchísimo 🥺💖
+
+Solo me importas tú, Franco 💕`;
+
+let i = 0;
+function escribir() {
+  if (i < texto.length) {
+    document.getElementById("carta").innerHTML += texto.charAt(i);
+    i++;
+    setTimeout(escribir, 40);
+  }
+}
+
+escribir();
+
+function aceptar() {
+  document.getElementById("carta").innerHTML = "Gracias por darme otra oportunidad amor 😭💖\nPrometo hacerlo mejor por nosotros ✨";
+}
+
+function mover() {
+  let boton = document.getElementById("no");
+  let x = Math.random() * window.innerWidth;
+  let y = Math.random() * window.innerHeight;
+  boton.style.left = x + "px";
+  boton.style.top = y + "px";
+}
+
+setInterval(() => {
+  let corazon = document.createElement("div");
+  corazon.classList.add("corazon");
+  corazon.innerHTML = "💖";
+  corazon.style.left = Math.random() * 100 + "vw";
+  corazon.style.fontSize = (Math.random() * 20 + 20) + "px";
+  document.body.appendChild(corazon);
+
+  setTimeout(() => {
+    corazon.remove();
+  }, 5000);
+}, 300);
+</script>
+
+</body>
+</html>
